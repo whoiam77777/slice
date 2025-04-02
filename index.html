@@ -145,7 +145,7 @@
             animation: fadeIn 1s ease 1s forwards;
         }
 
-        .cta-btn, .extra-download-btn {
+        .cta-btn {
             padding: 15px 40px;
             background: linear-gradient(135deg, #2d6657, #4c9c85);
             border: none;
@@ -154,12 +154,11 @@
             border-radius: 30px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin: 10px;
             opacity: 0;
             animation: fadeIn 1s ease 1.5s forwards, pulse 1.5s infinite ease 2s;
         }
 
-        .cta-btn:hover, .extra-download-btn:hover {
+        .cta-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 10px 25px rgba(44, 102, 87, 0.7);
         }
@@ -446,8 +445,7 @@
         <div class="hero-content">
             <h1 class="slice-title">SliceChain Wallet </h1>
             <p>Скачайте приложение для управления криптовалютой.</p>
-            <button class="cta-btn">Скачать!!!</button>
-            <button class="extra-download-btn">Скачать!!!</button>
+            <button class="cta-btn">Скачать</button>
         </div>
     </section>
 
@@ -520,7 +518,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const loginBtn = document.querySelector('.login-btn');
             const ctaBtn = document.querySelector('.cta-btn');
-            const extraDownloadBtn = document.querySelector('.extra-download-btn');
             const downloadBtns = document.querySelectorAll('.download-btn');
             const sliceTitle = document.querySelector('.slice-title');
 
@@ -539,13 +536,6 @@
             });
 
             ctaBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: document.querySelector('#download').offsetTop,
-                    behavior: 'smooth'
-                });
-            });
-
-            extraDownloadBtn.addEventListener('click', () => {
                 window.scrollTo({
                     top: document.querySelector('#download').offsetTop,
                     behavior: 'smooth'
