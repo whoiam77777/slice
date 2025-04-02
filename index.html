@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SliceChain Wallet - Ваш криптокошелёк</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="SliceChain Wallet" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#wallet">Кошелёк</a></li>
+                <li><a href="#trade">Торговля</a></li>
+                <li><a href="#support">Поддержка</a></li>
+                <li><button class="login-btn">Войти</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Главный раздел -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>SliceChain Wallet</h1>
+            <p>Безопасное хранение и управление вашей криптовалютой в одном месте.</p>
+            <button class="cta-btn">Создать кошелёк</button>
+        </div>
+    </section>
+
+    <!-- Раздел кошелька -->
+    <section id="wallet" class="wallet-section">
+        <h2>Ваш кошелёк</h2>
+        <div class="wallet-container">
+            <div class="wallet-card">
+                <h3>Баланс</h3>
+                <p class="balance">0.0000 BTC</p>
+                <p class="balance-usd">$0.00</p>
+                <button class="action-btn deposit-btn">Пополнить</button>
+                <button class="action-btn withdraw-btn">Вывести</button>
+            </div>
+            <div class="wallet-card">
+                <h3>Последние транзакции</h3>
+                <ul class="transaction-list">
+                    <li>Пополнение: 0.005 BTC - 01.04.2025</li>
+                    <li>Вывод: 0.002 BTC - 31.03.2025</li>
+                </ul>
+                <button class="action-btn">Все транзакции</button>
+            </div>
+            <div class="wallet-card">
+                <h3>Безопасность</h3>
+                <p class="security">Активируйте 2FA для защиты</p>
+                <button class="action-btn">Настроить 2FA</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел торговли -->
+    <section id="trade" class="trade-section">
+        <h2>Торгуйте криптовалютой</h2>
+        <div class="trade-container">
+            <div class="trade-card">
+                <h3>BTC/USD</h3>
+                <p class="price">$58,320.45</p>
+                <button class="trade-btn">Купить</button>
+                <button class="trade-btn">Продать</button>
+            </div>
+            <div class="trade-card">
+                <h3>ETH/USD</h3>
+                <p class="price">$2,450.12</p>
+                <button class="trade-btn">Купить</button>
+                <button class="trade-btn">Продать</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 SliceChain Wallet. Все права защищены.</p>
+            <ul class="footer-links">
+                <li><a href="#">Политика конфиденциальности</a></li>
+                <li><a href="#">Условия использования</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
