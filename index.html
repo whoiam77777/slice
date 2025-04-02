@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SliceChain Wallet - Премиум приложение</title>
+    <title>SliceChain Wallet - Скачать приложение</title>
     <style>
         * {
             margin: 0;
@@ -136,12 +136,12 @@
 
         .hero-content p {
             font-size: 26px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             opacity: 0;
             animation: fadeIn 1s ease 1.5s forwards;
         }
 
-        .cta-btn {
+        .cta-btn, .extra-download-btn {
             padding: 15px 40px;
             background: linear-gradient(135deg, #2d6657, #4c9c85);
             border: none;
@@ -152,9 +152,10 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0;
             animation: pulse 1.5s infinite ease 2s;
+            margin: 10px;
         }
 
-        .cta-btn:hover {
+        .cta-btn:hover, .extra-download-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 10px 25px rgba(44, 102, 87, 0.7);
         }
@@ -170,14 +171,14 @@
             100% { transform: scale(1); }
         }
 
-        /* Премиум описание */
-        .premium-section {
+        /* Описание возможностей */
+        .features-section {
             padding: 120px 50px;
             text-align: center;
             background: linear-gradient(135deg, #e6f0ea, #ffffff);
         }
 
-        .premium-section h2 {
+        .features-section h2 {
             font-size: 42px;
             margin-bottom: 40px;
             color: #1a3c34;
@@ -185,14 +186,14 @@
             animation: slideUp 1s ease forwards;
         }
 
-        .premium-container {
+        .features-container {
             display: flex;
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
         }
 
-        .premium-card {
+        .feature-card {
             background: white;
             padding: 40px;
             border-radius: 20px;
@@ -204,35 +205,35 @@
             animation: cardPop 0.8s ease forwards;
         }
 
-        .premium-card:nth-child(1) { animation-delay: 0.2s; }
-        .premium-card:nth-child(2) { animation-delay: 0.4s; }
-        .premium-card:nth-child(3) { animation-delay: 0.6s; }
+        .feature-card:nth-child(1) { animation-delay: 0.2s; }
+        .feature-card:nth-child(2) { animation-delay: 0.4s; }
+        .feature-card:nth-child(3) { animation-delay: 0.6s; }
 
-        .premium-card:hover {
+        .feature-card:hover {
             transform: translateY(-15px) rotate(2deg);
             box-shadow: 0 15px 30px rgba(44, 102, 87, 0.3);
         }
 
-        .premium-card h3 {
+        .feature-card h3 {
             font-size: 26px;
             margin-bottom: 20px;
             color: #2d6657;
         }
 
-        .premium-card p {
+        .feature-card p {
             font-size: 16px;
             color: #555;
         }
 
-        /* Графики с монетами */
-        .charts-section {
+        /* Интерфейс с монетами */
+        .interface-section {
             padding: 120px 50px;
             background: linear-gradient(135deg, #d9e6e0, #e6f0ea);
             text-align: center;
             position: relative;
         }
 
-        .charts-section h2 {
+        .interface-section h2 {
             font-size: 42px;
             margin-bottom: 60px;
             color: #1a3c34;
@@ -240,16 +241,17 @@
             animation: slideUp 1s ease forwards;
         }
 
-        .charts-container {
+        .interface-container {
             display: flex;
             justify-content: center;
             gap: 50px;
             flex-wrap: wrap;
             position: relative;
+            perspective: 1000px;
         }
 
         .chart-img {
-            width: 150px; /* Уменьшенный телефон */
+            width: 150px; /* Телефон */
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.5s ease;
@@ -258,7 +260,7 @@
         }
 
         .chart-img.macbook {
-            width: 300px; /* Уменьшенный MacBook для 1846x1076 */
+            width: 300px; /* MacBook для 1846x1076 */
             max-width: 100%;
         }
 
@@ -272,41 +274,48 @@
         /* 3D Монеты */
         .coin {
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #2d6657, #4c9c85);
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(44, 102, 87, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 5px 15px rgba(44, 102, 87, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.3);
             transform-style: preserve-3d;
-            animation: spin 6s infinite linear;
+            animation: spin3D 4s infinite linear;
         }
 
         .coin::before {
-            content: '$';
+            content: '₿';
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            font-size: 20px;
+            font-size: 24px;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
-        @keyframes spin {
-            0% { transform: rotateY(0deg) rotateX(0deg); }
-            100% { transform: rotateY(360deg) rotateX(360deg); }
+        @keyframes spin3D {
+            0% { transform: rotateY(0deg) rotateX(0deg) translateZ(0); }
+            50% { transform: rotateY(180deg) rotateX(180deg) translateZ(20px); }
+            100% { transform: rotateY(360deg) rotateX(360deg) translateZ(0); }
         }
 
-        .coin-1 { top: 20%; left: 35%; animation-delay: 0s; }
-        .coin-2 { top: 40%; left: 30%; animation-delay: 1s; }
-        .coin-3 { top: 60%; left: 35%; animation-delay: 2s; }
-        .coin-4 { top: 30%; left: 60%; animation-delay: 0.5s; }
-        .coin-5 { top: 50%; left: 65%; animation-delay: 1.5s; }
+        .coin-1 { top: 10%; left: 30%; animation: orbitPhone 6s infinite ease; }
+        .coin-2 { top: 40%; left: 25%; animation: orbitPhone 6s infinite ease 1s; }
+        .coin-3 { top: 70%; left: 30%; animation: orbitPhone 6s infinite ease 2s; }
+        .coin-4 { top: 20%; left: 60%; animation: orbitMac 6s infinite ease 0.5s; }
+        .coin-5 { top: 50%; left: 65%; animation: orbitMac 6s infinite ease 1.5s; }
 
-        @keyframes coinOrbit {
-            0% { transform: translate(-50px, -50px) rotateY(0deg); }
-            50% { transform: translate(50px, 50px) rotateY(180deg); }
-            100% { transform: translate(-50px, -50px) rotateY(360deg); }
+        @keyframes orbitPhone {
+            0% { transform: translate(-60px, -60px) rotateY(0deg); }
+            50% { transform: translate(60px, 60px) rotateY(180deg); }
+            100% { transform: translate(-60px, -60px) rotateY(360deg); }
+        }
+
+        @keyframes orbitMac {
+            0% { transform: translate(-80px, -80px) rotateY(0deg); }
+            50% { transform: translate(80px, 80px) rotateY(180deg); }
+            100% { transform: translate(-80px, -80px) rotateY(360deg); }
         }
 
         /* Раздел скачивания */
@@ -427,8 +436,8 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Главная</a></li>
-                <li><a href="#premium">Премиум</a></li>
-                <li><a href="#charts">Интерфейс</a></li>
+                <li><a href="#features">Возможности</a></li>
+                <li><a href="#interface">Интерфейс</a></li>
                 <li><a href="#download">Скачать</a></li>
                 <li><button class="login-btn">Войти</button></li>
             </ul>
@@ -439,47 +448,48 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="slice-title">SliceChain Wallet</h1>
-            <p>Скачайте премиум-приложение для управления криптовалютой.</p>
+            <p>Скачайте приложение для управления криптовалютой.</p>
             <button class="cta-btn">Скачать сейчас</button>
+            <button class="extra-download-btn">Скачать</button>
         </div>
     </section>
 
-    <!-- Премиум описание -->
-    <section id="premium" class="premium-section">
-        <h2>Премиум-возможности</h2>
-        <div class="premium-container">
-            <div class="premium-card">
-                <h3>Элитная безопасность</h3>
-                <p>Ваши активы под защитой самых современных технологий.</p>
+    <!-- Описание возможностей -->
+    <section id="features" class="features-section">
+        <h2>Что вы получите</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <h3>Высокая безопасность</h3>
+                <p>Ваши активы под защитой современных технологий.</p>
             </div>
-            <div class="premium-card">
-                <h3>Премиум-дизайн</h3>
-                <p>Изысканный интерфейс для комфортного управления.</p>
+            <div class="feature-card">
+                <h3>Удобный интерфейс</h3>
+                <p>Простое управление для всех уровней опыта.</p>
             </div>
-            <div class="premium-card">
-                <h3>Молниеносные операции</h3>
-                <p>Сверхбыстрые транзакции с минимальными комиссиями.</p>
+            <div class="feature-card">
+                <h3>Быстрые операции</h3>
+                <p>Мгновенные транзакции с низкими комиссиями.</p>
             </div>
-        </divA>
+        </div>
     </section>
 
-    <!-- Графики с монетами -->
-    <section id="charts" class="charts-section">
-        <h2>Премиум-интерфейс</h2>
-        <div class="charts-container">
+    <!-- Интерфейс с монетами -->
+    <section id="interface" class="interface-section">
+        <h2>Как это выглядит</h2>
+        <div class="interface-container">
             <img src="chart1.png" alt="Интерфейс на iPhone" class="chart-img">
             <img src="chart2.png" alt="Интерфейс на MacBook" class="chart-img macbook">
-            <div class="coin coin-1" style="animation: coinOrbit 5s infinite ease;"></div>
-            <div class="coin coin-2" style="animation: coinOrbit 5s infinite ease 1s;"></div>
-            <div class="coin coin-3" style="animation: coinOrbit 5s infinite ease 2s;"></div>
-            <div class="coin coin-4" style="animation: coinOrbit 5s infinite ease 0.5s;"></div>
-            <div class="coin coin-5" style="animation: coinOrbit 5s infinite ease 1.5s;"></div>
+            <div class="coin coin-1"></div>
+            <div class="coin coin-2"></div>
+            <div class="coin coin-3"></div>
+            <div class="coin coin-4"></div>
+            <div class="coin coin-5"></div>
         </div>
     </section>
 
     <!-- Раздел скачивания -->
     <section id="download" class="download-section">
-        <h2>Скачать премиум-приложение</h2>
+        <h2>Где скачать</h2>
         <div class="download-container">
             <div class="download-card">
                 <h3>Для iOS</h3>
@@ -508,6 +518,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const loginBtn = document.querySelector('.login-btn');
             const ctaBtn = document.querySelector('.cta-btn');
+            const extraDownloadBtn = document.querySelector('.extra-download-btn');
             const downloadBtns = document.querySelectorAll('.download-btn');
             const sliceTitle = document.querySelector('.slice-title');
 
@@ -522,10 +533,17 @@
             });
 
             loginBtn.addEventListener('click', () => {
-                alert('Вход доступен после скачивания премиум-приложения!');
+                alert('Вход доступен после скачивания приложения!');
             });
 
             ctaBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: document.querySelector('#download').offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+
+            extraDownloadBtn.addEventListener('click', () => {
                 window.scrollTo({
                     top: document.querySelector('#download').offsetTop,
                     behavior: 'smooth'
