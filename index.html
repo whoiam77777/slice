@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SliceChain Wallet - Скачать приложение</title>
+    <title>SliceChain Wallet - Премиум приложение</title>
     <style>
         * {
             margin: 0;
@@ -32,12 +32,11 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-            transition: background 0.3s ease;
         }
 
         .logo-img {
             height: 50px;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
 
         .logo-img:hover {
@@ -100,7 +99,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(26, 60, 52, 0.4), rgba(76, 156, 133, 0.2));
+            background: linear-gradient(135deg, rgba(26, 60, 52, 0.5), rgba(76, 156, 133, 0.3));
             z-index: 0;
         }
 
@@ -110,12 +109,13 @@
         }
 
         .slice-title {
-            font-size: 60px;
+            font-size: 70px;
             margin-bottom: 20px;
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
             animation: sliceIn 1.5s ease forwards;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .slice-title span {
@@ -135,7 +135,7 @@
         }
 
         .hero-content p {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 30px;
             opacity: 0;
             animation: fadeIn 1s ease 1.5s forwards;
@@ -172,13 +172,13 @@
 
         /* Премиум описание */
         .premium-section {
-            padding: 100px 50px;
+            padding: 120px 50px;
             text-align: center;
             background: linear-gradient(135deg, #e6f0ea, #ffffff);
         }
 
         .premium-section h2 {
-            font-size: 40px;
+            font-size: 42px;
             margin-bottom: 40px;
             color: #1a3c34;
             opacity: 0;
@@ -224,16 +224,17 @@
             color: #555;
         }
 
-        /* Графики */
+        /* Графики с монетами */
         .charts-section {
-            padding: 100px 50px;
+            padding: 120px 50px;
             background: linear-gradient(135deg, #d9e6e0, #e6f0ea);
             text-align: center;
+            position: relative;
         }
 
         .charts-section h2 {
-            font-size: 40px;
-            margin-bottom: 40px;
+            font-size: 42px;
+            margin-bottom: 60px;
             color: #1a3c34;
             opacity: 0;
             animation: slideUp 1s ease forwards;
@@ -242,17 +243,23 @@
         .charts-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 50px;
             flex-wrap: wrap;
+            position: relative;
         }
 
         .chart-img {
-            width: 200px; /* Уменьшенный размер */
+            width: 150px; /* Уменьшенный телефон */
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            transition: transform 0.5s ease;
             opacity: 0;
             animation: bounceIn 1s ease forwards;
+        }
+
+        .chart-img.macbook {
+            width: 300px; /* Уменьшенный MacBook для 1846x1076 */
+            max-width: 100%;
         }
 
         .chart-img:nth-child(1) { animation-delay: 0.2s; }
@@ -262,21 +269,55 @@
             transform: scale(1.1) rotate(5deg);
         }
 
-        @keyframes bounceIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            60% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
+        /* 3D Монеты */
+        .coin {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2d6657, #4c9c85);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(44, 102, 87, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.5);
+            transform-style: preserve-3d;
+            animation: spin 6s infinite linear;
+        }
+
+        .coin::before {
+            content: '$';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 20px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes spin {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(360deg); }
+        }
+
+        .coin-1 { top: 20%; left: 35%; animation-delay: 0s; }
+        .coin-2 { top: 40%; left: 30%; animation-delay: 1s; }
+        .coin-3 { top: 60%; left: 35%; animation-delay: 2s; }
+        .coin-4 { top: 30%; left: 60%; animation-delay: 0.5s; }
+        .coin-5 { top: 50%; left: 65%; animation-delay: 1.5s; }
+
+        @keyframes coinOrbit {
+            0% { transform: translate(-50px, -50px) rotateY(0deg); }
+            50% { transform: translate(50px, 50px) rotateY(180deg); }
+            100% { transform: translate(-50px, -50px) rotateY(360deg); }
         }
 
         /* Раздел скачивания */
         .download-section {
-            padding: 100px 50px;
+            padding: 120px 50px;
             text-align: center;
             background: linear-gradient(135deg, #e6f0ea, #ffffff);
         }
 
         .download-section h2 {
-            font-size: 40px;
+            font-size: 42px;
             margin-bottom: 40px;
             color: #1a3c34;
             opacity: 0;
@@ -369,6 +410,12 @@
             0% { transform: scale(0.9); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -380,7 +427,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Главная</a></li>
-                <li><a href="#premium">Преимущества</a></li>
+                <li><a href="#premium">Премиум</a></li>
                 <li><a href="#charts">Интерфейс</a></li>
                 <li><a href="#download">Скачать</a></li>
                 <li><button class="login-btn">Войти</button></li>
@@ -392,42 +439,47 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="slice-title">SliceChain Wallet</h1>
-            <p>Скачайте лучшее приложение для управления криптовалютой.</p>
-            <button class="cta-btn">Скачать приложение</button>
+            <p>Скачайте премиум-приложение для управления криптовалютой.</p>
+            <button class="cta-btn">Скачать сейчас</button>
         </div>
     </section>
 
     <!-- Премиум описание -->
     <section id="premium" class="premium-section">
-        <h2>Почему SliceChain Wallet?</h2>
+        <h2>Премиум-возможности</h2>
         <div class="premium-container">
             <div class="premium-card">
-                <h3>Высокая безопасность</h3>
-                <p>Ваши активы защищены передовыми технологиями шифрования.</p>
+                <h3>Элитная безопасность</h3>
+                <p>Ваши активы под защитой самых современных технологий.</p>
             </div>
             <div class="premium-card">
-                <h3>Удобный интерфейс</h3>
-                <p>Простое управление криптовалютой для всех уровней опыта.</p>
+                <h3>Премиум-дизайн</h3>
+                <p>Изысканный интерфейс для комфортного управления.</p>
             </div>
             <div class="premium-card">
-                <h3>Быстрые операции</h3>
-                <p>Мгновенные транзакции с минимальными комиссиями.</p>
+                <h3>Молниеносные операции</h3>
+                <p>Сверхбыстрые транзакции с минимальными комиссиями.</p>
             </div>
-        </div>
+        </divA>
     </section>
 
-    <!-- Графики -->
+    <!-- Графики с монетами -->
     <section id="charts" class="charts-section">
-        <h2>Интерфейс приложения</h2>
+        <h2>Премиум-интерфейс</h2>
         <div class="charts-container">
-            <img src="chart1.png" alt="График на iPhone" class="chart-img">
-            <img src="chart2.png" alt="График на MacBook" class="chart-img">
+            <img src="chart1.png" alt="Интерфейс на iPhone" class="chart-img">
+            <img src="chart2.png" alt="Интерфейс на MacBook" class="chart-img macbook">
+            <div class="coin coin-1" style="animation: coinOrbit 5s infinite ease;"></div>
+            <div class="coin coin-2" style="animation: coinOrbit 5s infinite ease 1s;"></div>
+            <div class="coin coin-3" style="animation: coinOrbit 5s infinite ease 2s;"></div>
+            <div class="coin coin-4" style="animation: coinOrbit 5s infinite ease 0.5s;"></div>
+            <div class="coin coin-5" style="animation: coinOrbit 5s infinite ease 1.5s;"></div>
         </div>
     </section>
 
     <!-- Раздел скачивания -->
     <section id="download" class="download-section">
-        <h2>Скачать SliceChain Wallet</h2>
+        <h2>Скачать премиум-приложение</h2>
         <div class="download-container">
             <div class="download-card">
                 <h3>Для iOS</h3>
@@ -470,7 +522,7 @@
             });
 
             loginBtn.addEventListener('click', () => {
-                alert('Вход в систему скоро будет доступен после скачивания!');
+                alert('Вход доступен после скачивания премиум-приложения!');
             });
 
             ctaBtn.addEventListener('click', () => {
