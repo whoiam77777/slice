@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctaBtn = document.querySelector('.cta-btn');
     const actionBtns = document.querySelectorAll('.action-btn');
     const tradeBtns = document.querySelectorAll('.trade-btn');
+    const sliceTitle = document.querySelector('.slice-title');
+
+    // Анимация нарезки заголовка
+    const text = sliceTitle.textContent;
+    sliceTitle.innerHTML = '';
+    text.split('').forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.animationDelay = `${index * 0.05}s`;
+        sliceTitle.appendChild(span);
+    });
 
     loginBtn.addEventListener('click', () => {
         alert('Вход в SliceChain Wallet скоро будет доступен!');

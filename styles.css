@@ -9,6 +9,7 @@ body {
     background-color: #f5f6fa;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* Навигация */
@@ -17,16 +18,23 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: #1a1f71;
+    background: linear-gradient(135deg, #1a1f71, #2e357b);
     color: white;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
 }
 
 .logo-img {
     height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.1);
 }
 
 .nav-links {
@@ -42,19 +50,26 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #a3bffa;
 }
 
 .login-btn {
     padding: 10px 20px;
-    background-color: #584cf4;
+    background: linear-gradient(135deg, #584cf4, #7f9cf5);
     border: none;
     color: white;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-btn:hover {
-    background-color: #4638c2;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(88, 76, 244, 0.5);
 }
 
 /* Главный раздел */
@@ -66,41 +81,82 @@ body {
     align-items: center;
     text-align: center;
     color: white;
+    position: relative;
+    overflow: hidden;
 }
 
-.hero-content h1 {
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.slice-title {
     font-size: 48px;
     margin-bottom: 20px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: sliceIn 1.5s ease forwards;
+}
+
+.slice-title span {
+    display: inline-block;
+    transform: translateY(100%);
+    animation: sliceUp 0.5s ease forwards;
+}
+
+@keyframes sliceIn {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes sliceUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
 }
 
 .hero-content p {
     font-size: 20px;
     margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.5s forwards;
 }
 
 .cta-btn {
     padding: 15px 30px;
-    background-color: #584cf4;
+    background: linear-gradient(135deg, #584cf4, #7f9cf5);
     border: none;
     color: white;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease 2s forwards;
 }
 
 .cta-btn:hover {
-    background-color: #4638c2;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(88, 76, 244, 0.6);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* Раздел кошелька */
 .wallet-section {
     padding: 80px 50px;
     text-align: center;
+    background: linear-gradient(135deg, #eef0fa, #ffffff);
 }
 
 .wallet-section h2 {
     font-size: 36px;
     margin-bottom: 40px;
+    opacity: 0;
+    animation: slideUp 1s ease forwards;
 }
 
 .wallet-container {
@@ -110,12 +166,24 @@ body {
 }
 
 .wallet-card {
-    background-color: white;
+    background: white;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: cardPop 0.8s ease forwards;
+}
+
+.wallet-card:nth-child(1) { animation-delay: 0.2s; }
+.wallet-card:nth-child(2) { animation-delay: 0.4s; }
+.wallet-card:nth-child(3) { animation-delay: 0.6s; }
+
+.wallet-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .wallet-card h3 {
@@ -144,7 +212,12 @@ body {
 
 .transaction-list li {
     margin: 10px 0;
+    opacity: 0;
+    animation: slideUp 0.5s ease forwards;
 }
+
+.transaction-list li:nth-child(1) { animation-delay: 0.8s; }
+.transaction-list li:nth-child(2) { animation-delay: 1s; }
 
 .security {
     font-size: 18px;
@@ -154,28 +227,32 @@ body {
 
 .action-btn {
     padding: 10px 20px;
-    background-color: #1a1f71;
+    background: linear-gradient(135deg, #1a1f71, #2e357b);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     margin: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .action-btn:hover {
-    background-color: #141759;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(26, 31, 113, 0.5);
 }
 
 /* Раздел торговли */
 .trade-section {
     padding: 80px 50px;
     text-align: center;
-    background-color: #eef0fa;
+    background: linear-gradient(135deg, #eef0fa, #d6d9f5);
 }
 
 .trade-section h2 {
     font-size: 36px;
     margin-bottom: 40px;
+    opacity: 0;
+    animation: slideUp 1s ease forwards;
 }
 
 .trade-container {
@@ -185,12 +262,23 @@ body {
 }
 
 .trade-card {
-    background-color: white;
+    background: white;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 250px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: cardPop 0.8s ease forwards;
+}
+
+.trade-card:nth-child(1) { animation-delay: 0.2s; }
+.trade-card:nth-child(2) { animation-delay: 0.4s; }
+
+.trade-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .trade-card h3 {
@@ -206,21 +294,23 @@ body {
 
 .trade-btn {
     padding: 10px 20px;
-    background-color: #584cf4;
+    background: linear-gradient(135deg, #584cf4, #7f9cf5);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     margin: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .trade-btn:hover {
-    background-color: #4638c2;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(88, 76, 244, 0.5);
 }
 
 /* Футер */
 footer {
-    background-color: #1a1f71;
+    background: linear-gradient(135deg, #1a1f71, #2e357b);
     color: white;
     padding: 40px 50px;
     text-align: center;
@@ -237,8 +327,20 @@ footer {
 .footer-links a {
     color: white;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    text-decoration: underline;
+    color: #a3bffa;
+}
+
+/* Общие анимации */
+@keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes cardPop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
